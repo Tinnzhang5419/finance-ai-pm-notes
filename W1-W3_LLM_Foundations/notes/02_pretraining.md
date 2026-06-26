@@ -86,6 +86,19 @@ king - man + woman ≈ queen
 "bank"（银行）和"bank"（河岸）是**同一个 token ID，同一个初始向量**。  
 Tokenization 和 Embedding 阶段不区分一词多义，区分靠 Attention。
 
+**⚠️ 静态 Embedding 不是没用——它是 Attention 的输入原料**  
+token ID 只是编号（如1234），没有数学意义，无法做运算。  
+Attention 需要向量才能计算权重，所以静态 Embedding 是必经的第一步。
+
+```
+token ID → 静态Embedding → Attention计算 → 动态语境向量
+  编号        原料              加工              成品
+```
+
+类比：静态 Embedding 是生鸡蛋，Attention 是烹饪过程，动态向量是最终的菜。  
+同样的原料（生鸡蛋），不同语境（炒/煮/蒸）出不同结果。  
+**静态 Embedding 是跳板，Attention 才是核心。**
+
 ---
 
 ### 3.2 Attention：动态融合上下文
